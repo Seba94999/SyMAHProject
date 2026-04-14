@@ -1,0 +1,63 @@
+/* Estilos para el componente Navbar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #33333341;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar .navbar-brand img {
+  padding: 0 20px;
+  height: 80px;
+  width: 80px;
+}
+
+.navbar .navbar-links {
+  display: flex;
+  gap: 0px;
+}
+
+.navbar .navbar-links button {
+  padding: 40px 40px;
+  height: 120px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 0;
+}
+
+.navbar .navbar-links button:hover {
+  background-color: #f0c040;
+  transform: scaleY(1.1);
+  color: #000000;
+  transform: translateY(1.5);
+}
+
+.navbar .navbar-links button.active {
+  background-color: #f0c040;
+  height: 144px;
+  color: #000000;
+  font-size: 1.4rem;
+}
+
+.navbar .navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 0;
+}

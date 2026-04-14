@@ -1,0 +1,22 @@
+.presentation {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  text-align: start;
+  padding: 30px;
+  background-color: #2727276c;
+  transition: 0.3s ease-in-out;
+}
+
+.presentation:hover {
+  background-color: #6464646c;
+}
+
+h1 {
+  font-size: 50px;
+  color: #f0c040;
+  text-align: start;
+}

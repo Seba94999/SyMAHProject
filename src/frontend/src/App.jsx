@@ -1,13 +1,22 @@
 import "./App.css";
-import api from "./api/api";
-import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import React from "react";
 
 function App() {
-  useEffect(() => {
-    api.get("/").then((res) => console.log(res.data));
-  }, []);
-
-  return <h1>Sistema Gestión</h1>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/inicio" replace />} />
+        <Route path="/inicio" element={<HomePage />} />
+        <Route path="/clientes" element={<div>Clientes Page</div>} />
+        <Route path="/trabajos" element={<div>Trabajos Page</div>} />
+        <Route path="/empleados" element={<div>Empleados Page</div>} />
+        <Route path="/transacciones" element={<div>Transacciones Page</div>} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
