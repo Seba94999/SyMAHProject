@@ -1,0 +1,81 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px); /* Efecto blur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  background: #393939;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+div .modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+
+div .modal-content form label,
+div .modal-content form select {
+  display: flex;
+  font-size: 18px;
+  color: #ffffff;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0px 0px 0px 10px;
+}
+
+div .modal-content form input,
+div .modal-content form select {
+  padding: 10px;
+  width: 300px;
+  border: none;
+  border-radius: 4px;
+  background-color: #646464;
+  color: #ffffff;
+  font-size: 16px;
+  transition: 0.2s ease-in-out;
+  background-color: #464646;
+}
+
+div .modal-content form input:hover,
+div .modal-content form select:hover {
+  background-color: #5a5a5a;
+}
+
+.modal-header h2 {
+  font-size: 30px;
+  color: #ffffff;
+  text-align: start;
+  margin-bottom: 90px;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.modal-header img {
+  width: 120px;
+  height: 85px;
+  margin: 0px 0px 0px 100px;
+}
