@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Table.css";
 
-const Table = ({ data, columns, actions }) => {
+const Table = ({ data, columns }) => {
   return (
     <div className="table-container">
       <table className="table">
@@ -10,28 +10,16 @@ const Table = ({ data, columns, actions }) => {
             {columns.map((col, index) => (
               <th key={index}>{col.label}</th>
             ))}
-            {actions && <th>Acciones</th>}
           </tr>
         </thead>
         <tbody>
           {data.map((row, index) => (
             <tr key={index}>
               {columns.map((col, colIndex) => (
-                <td key={colIndex}>{row[col.key]}</td>
-              ))}
-              {actions && (
-                <td>
-                  {actions.map((action, actionIndex) => (
-                    <button
-                      key={actionIndex}
-                      onClick={() => action.onClick(row)}
-                      className={action.className || "action-button"}
-                    >
-                      {action.label}
-                    </button>
-                  ))}
+                <td key={colIndex}>
+                  {col.render ? col.render(row) : row[col.key]}
                 </td>
-              )}
+              ))}
             </tr>
           ))}
         </tbody>

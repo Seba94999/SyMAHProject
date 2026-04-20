@@ -53,6 +53,7 @@ div .modal-content form select {
   font-size: 16px;
   transition: 0.2s ease-in-out;
   background-color: #464646;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 div .modal-content form input:hover,
@@ -61,10 +62,10 @@ div .modal-content form select:hover {
 }
 
 .modal-header h2 {
-  font-size: 30px;
+  font-size: 20px;
   color: #ffffff;
   text-align: start;
-  margin-bottom: 90px;
+  margin-bottom: 20px;
 }
 
 .modal-header {
@@ -75,7 +76,28 @@ div .modal-content form select:hover {
 }
 
 .modal-header img {
-  width: 120px;
-  height: 85px;
-  margin: 0px 0px 0px 100px;
+  width: 90px;
+  height: 90px;
+  margin-left: 200px;
+}
+
+.modal-header #reg {
+  align-items: start;
+  width: 70px;
+  height: 50px;
+}
+
+.modal-field {
+  display: flex;
+  font-size: 18px;
+  color: #ffffff;
+}
+button {
+  align-self: center;
+  margin-top: 20px;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
 }
