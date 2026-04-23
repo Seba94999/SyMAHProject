@@ -28,13 +28,16 @@ const RegistrarModal = ({ isOpen, onClose, onSave, fields, title }) => {
       <form onSubmit={handleSubmit}>
         {fields.map((field) => (
           <div key={field.name}>
-            <input
-              type={field.type || "text"}
-              name={field.name}
-              value={formData[field.name]}
-              onChange={handleChange}
-              required={field.required}
-            />
+            <label htmlFor={field.name}>
+              {field.label}
+              <input
+                type={field.type || "text"}
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+                required={field.required}
+              />
+            </label>
           </div>
         ))}
         <div className="modal-footer">
