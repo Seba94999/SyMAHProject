@@ -16,7 +16,7 @@ const ConsultarModal = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="modal-header">
-        <h2>{title}</h2>
+        <h1>{title}</h1>
       </div>
       <div className="modal-table">
         <Table data={tableData} columns={columns} />

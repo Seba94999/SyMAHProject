@@ -26,7 +26,7 @@ const ModificarModal = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="modal-header">
-        <h2>{title}</h2>
+        <h1>{title}</h1>
       </div>
       <form onSubmit={handleSubmit}>
         {fields.map((field) => (

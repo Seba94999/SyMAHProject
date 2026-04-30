@@ -33,17 +33,24 @@
   background-color: #3a3a3a;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
 .action-button {
   background: none;
   border: none;
   color: #f0c040;
-  font-size: 18px;
+  font-size: 0px;
   cursor: pointer;
-  margin-right: 5px;
-  margin-bottom: 20px;
   transition: 0.2s ease-in-out;
+  text-align: center;
 }
 
 .action-button:hover {
   color: #d9a830;
+  transform: scale(1.2);
 }

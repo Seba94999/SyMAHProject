@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Table.css";
 
-const Table = ({ data, columns }) => {
+const Table = ({ data = [], columns = [] }) => {
   return (
     <div className="table-container">
       <table className="table">

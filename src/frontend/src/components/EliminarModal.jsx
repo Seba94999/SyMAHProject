@@ -6,7 +6,7 @@ const EliminarModal = ({ isOpen, onClose, onConfirm, title, message }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="modal-header">
-        <h2>{title}</h2>
+        <h1>{title}</h1>
       </div>
       <div className="modal-body">
         <p>{message}</p>

@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/Button.css";
 
-const Button = ({ onClick, children, variant = "default" }) => {
+const Button = ({ onClick, children, label, variant = "default" }) => {
   return (
     <button className={`button-${variant}`} onClick={onClick}>
-      {children}
+      {label || children}
     </button>
   );
 };

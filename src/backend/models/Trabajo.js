@@ -38,6 +38,28 @@ const trabajoSchema = new mongoose.Schema(
       ref: "CuentaTrabajo",
       required: true,
     },
+    presupuesto: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Presupuesto",
+      required: true,
+    },
+    jornadas: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Jornada",
+      },
+    ],
+    empleado: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Empleado",
+      required: true,
+    },
+    fechaInicio: {
+      type: Date,
+    },
+    fechaFin: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

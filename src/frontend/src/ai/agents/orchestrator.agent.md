@@ -166,3 +166,4 @@ Flujo:
 1. Reutilizar componentes
 2. Aplicar designSystem
 3. Mantener consistencia visual
+4. Aplicar skills de estilos de acuerdo al componente generado y diseño definido para mantener consistencia visual en toda la aplicación.
