@@ -4,11 +4,14 @@ import Table from "../components/Table";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
 import api from "../api/api";
+import ConsultarModal from "../components/ConsultarModal";
+import EliminarModal from "../components/EliminarModal";
+import RegistrarModal from "../components/RegistrarModal";
 
 const TransaccionesPage = () => {
   const [transacciones, setTransacciones] = useState([]);
   const [isRegistrarModalOpen, setIsRegistrarModalOpen] = useState(false);
-  const [isModificarModalOpen, setIsModificarModalOpen] = useState(false);
+  const [isConsultarModalOpen, setIsConsultarModalOpen] = useState(false);
   const [isEliminarModalOpen, setIsEliminarModalOpen] = useState(false);
   const [transaccionSeleccionada, setTransaccionSeleccionada] = useState(null);
 
@@ -31,9 +34,10 @@ const TransaccionesPage = () => {
             tipo: "COBRO",
           },
         ];
-        setTransacciones(mockTransacciones);
+        setTransacciones(mockTransacciones || []);
       } catch (error) {
         console.error("Error al obtener las transacciones", error);
+        setTransacciones([]); // Asegurar que siempre sea un array
       }
     };
 
@@ -50,19 +54,9 @@ const TransaccionesPage = () => {
     }
   };
 
-  const handleModificarTransaccion = async (transaccion) => {
-    try {
-      const response = await api.put(
-        `/transacciones/${transaccion.id}`,
-        transaccion,
-      );
-      setTransacciones(
-        transacciones.map((t) => (t.id === transaccion.id ? response.data : t)),
-      );
-      setIsModificarModalOpen(false);
-    } catch (error) {
-      console.error("Error al modificar la transacción", error);
-    }
+  const handleConsultarTransaccion = (transaccion) => {
+    setTransaccionSeleccionada(transaccion);
+    setIsConsultarModalOpen(true);
   };
 
   const handleEliminarTransaccion = async (id) => {
@@ -104,13 +98,11 @@ const TransaccionesPage = () => {
         <div className="action-buttons">
           <button
             className="action-button"
-            title="Modificar"
-            onClick={() => {
-              setTransaccionSeleccionada(transaccion);
-              setIsModificarModalOpen(true);
-            }}
+            title="Consultar"
+            onClick={() => handleConsultarTransaccion(transaccion)}
+            aria-label="Abrir modal para consultar transacción"
           >
-            <img src="../../public/icon/config.svg" alt="Modificar" />
+            <img src="../../public/icon/consult.svg" alt="Consultar" />
           </button>
           <button
             className="action-button"
@@ -119,6 +111,7 @@ const TransaccionesPage = () => {
               setTransaccionSeleccionada(transaccion);
               setIsEliminarModalOpen(true);
             }}
+            aria-label="Abrir modal para eliminar transacción"
           >
             <img src="../../public/icon/delete.svg" alt="Eliminar" />
           </button>
@@ -137,37 +130,48 @@ const TransaccionesPage = () => {
       >
         +
       </Button>
-      <Table data={transacciones} columns={columns} />
+      <Table data={transacciones || []} columns={columns} />
 
       {isRegistrarModalOpen && (
-        <Modal
-          title="Registrar Transacción"
+        <RegistrarModal
+          isOpen={isRegistrarModalOpen}
           onClose={() => setIsRegistrarModalOpen(false)}
           onSave={handleRegistrarTransaccion}
           fields={transaccionFields}
+          title="Registrar Transacción"
         />
       )}
 
-      {isModificarModalOpen && (
-        <Modal
-          title="Modificar Transacción"
-          onClose={() => setIsModificarModalOpen(false)}
-          onSave={handleModificarTransaccion}
-          fields={transaccionFields}
-          initialData={transaccionSeleccionada}
+      {isConsultarModalOpen && transaccionSeleccionada && (
+        <ConsultarModal
+          title="Consultar Transacción"
+          isOpen={isConsultarModalOpen}
+          onClose={() => setIsConsultarModalOpen(false)}
+          tableData={[
+            Object.fromEntries(
+              Object.entries(transaccionSeleccionada).map(([key, value]) => [
+                key,
+                value,
+              ]),
+            ),
+          ]}
+          columns={Object.keys(transaccionSeleccionada).map((key) => ({
+            label: key.charAt(0).toUpperCase() + key.slice(1),
+            key,
+          }))}
         />
       )}
 
       {isEliminarModalOpen && (
-        <Modal
+        <EliminarModal
           title="Eliminar Transacción"
+          isOpen={isEliminarModalOpen}
           onClose={() => setIsEliminarModalOpen(false)}
           onConfirm={() =>
             handleEliminarTransaccion(transaccionSeleccionada.id)
           }
-        >
-          <p>¿Está seguro que desea eliminar esta transacción?</p>
-        </Modal>
+          message="¿Está seguro que desea eliminar esta transacción?"
+        />
       )}
     </PageLayout>
   );

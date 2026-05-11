@@ -1,212 +1,218 @@
-# Sistema de Agentes Frontend - SyMAH
+# Sistema de Agentes Frontend - SYMAH
 
 ## Contexto
 
-Este proyecto utiliza agentes para generar código frontend en React (Vite),
-basado en una arquitectura modular y en reglas de negocio definidas.
+SYMAH utiliza una arquitectura basada en agentes y skills para generar interfaces frontend en React + Vite.
 
-El objetivo es construir interfaces reutilizables, consistentes y alineadas
-con el dominio contable del sistema.
+El sistema está orientado a:
+
+- gestión operativa
+- control financiero
+- visualización empresarial
+- modularidad
+- reutilización
+- escalabilidad
+
+La interfaz debe sentirse como:
+
+- dashboard empresarial
+- sistema operativo de gestión
+- software financiero moderno
 
 ---
 
-## Agente Orquestador
+# Arquitectura General
 
-### orchestrator.agent.md
+El sistema se divide en:
+
+- Agente Orquestador
+- Agentes de Dominio
+- Agente UI
+- Skills especializadas
+- Design System centralizado
+
+---
+
+# Agente Orquestador
+
+## orchestrator.agent.md
 
 Responsable de:
 
-- Interpretar la intención del desarrollador
-- Determinar módulo (clientes, trabajos, empleados, transacciones, cuenta)
-- Seleccionar agente y skill adecuados
-- Coordinar UI Agent + Domain Agent
+- interpretar intención del desarrollador
+- identificar módulo y contexto
+- seleccionar skills adecuadas
+- coordinar UI + dominio
+- mantener coherencia visual
+- aplicar jerarquía de diseño
+
+Debe priorizar:
+
+- reutilización
+- consistencia
+- experiencia enterprise
+- arquitectura escalable
 
 ---
 
-## Agentes de Dominio
+# Agentes de Dominio
 
-### cliente.agent.md
+## clientes.skill.md
 
 Gestiona:
 
 - ABMC clientes
-- Presupuestos asociados
+- presupuestos
+- relación cliente-trabajos
 
 ---
 
-### trabajo.agent.md
+## trabajos.skill.md
 
 Gestiona:
 
-- Trabajos
-- Estados (En Curso, Pausa, Finalizado, Cancelado)
-- Cobros
+- trabajos
+- estados operativos
+- cobros
+- progreso
 
-Reglas clave:
+Estados:
 
-- No operar sobre trabajos cancelados
+- En Curso
+- En Pausa
+- Finalizado
+- Cancelado
+
+Reglas:
+
+- no operar trabajos cancelados
+- mantener trazabilidad
+- controlar estado operativo
 
 ---
 
-### empleado.agent.md
+## empleados.skill.md
 
 Gestiona:
 
-- Empleados
-- Jornadas
-- Pagos
+- empleados
+- jornadas
+- pagos
+- actividad laboral
 
-Reglas clave:
+Reglas:
 
-- Empleado inactivo no puede:
+- empleados inactivos no pueden:
   - registrar jornadas
   - recibir pagos
 
 ---
 
-### transaccion.agent.md
+## transacciones.skill.md
 
 Gestiona:
 
-- Pagos
-- Cobros
-- Gastos
-- Préstamos
+- pagos
+- cobros
+- gastos
+- préstamos
 
-Reglas clave:
+Reglas:
 
-- RN-04: pagos > 0 y solo a empleados activos
-- RN-06: cobros > 0
-- RN-08: gastos > 0
-- RN-09: préstamos requieren tipo (otorgado/recibido)
+- pagos > 0
+- cobros > 0
+- gastos > 0
+- préstamos requieren tipo
 
-Impacto:
-
-- Todas las transacciones afectan cuentas contables
+Toda transacción impacta cuentas contables.
 
 ---
 
-### cuenta.agent.md
+## contabilidad.skill.md
 
 Gestiona:
 
-- Visualización de cuentas
-- Saldos
-- Integración con libro diario
+- cuentas
+- movimientos
+- saldos
+- libro diario
 
-Reglas clave:
+Reglas:
 
-- RN-12:
-  Caja = acumulado + cobros − pagos − gastos − préstamos
+- mantener integridad contable
+- evitar inconsistencias
+- sincronizar movimientos y saldo
 
-- No permitir inconsistencias entre movimientos y saldo
+Caja:
 
----
-
-### cuentaSymah.agent.md
-
-Gestiona:
-
-- Dashboard financiero
-- Métricas:
-  - Gasto MO
-  - Gastos
-  - Gastos fijos
-  - Pagado
-  - Cobrado
-  - Préstamos
-  - Ganancia
-  - Ingresos
-  - Egresos
-  - Caja
-
-- Visualización:
-  - Tabla resumen
-  - Gráfico de barras
-
-Objetivo:
-
-- Representar el estado financiero global del sistema
+acumulado + cobros − pagos − gastos − préstamos
 
 ---
 
-## Agente UI
+## cuentaSymah.skill.md
 
-### ui.agent.md
+Gestiona dashboard financiero global.
+
+Métricas:
+
+- gasto MO
+- gastos
+- gastos fijos
+- pagado
+- cobrado
+- préstamos
+- ingresos
+- egresos
+- ganancia
+- caja
+
+Visualización:
+
+- KPIs
+- tablas resumen
+- gráficos
+- métricas operativas
+
+---
+
+# Agente UI
+
+## ui.agent.md
 
 Responsable de:
 
-- Generar componentes visuales reutilizables
-- Aplicar Design System SyMAH
+- generar componentes reutilizables
+- aplicar design system
+- mantener consistencia visual
+- construir layouts enterprise
 
-Componentes:
+---
 
-- Navbar (fija)
+# Componentes Base
+
+Componentes reutilizables:
+
+- Navbar
 - PageLayout
+- Layout
+- Dashboard
+- Card
+- KPI
+- Chart
 - Table
-- Modal (con blur)
-- Button
+- Modal
 - Form
+- Button
 - FloatingButton
-
-Reglas UX (RNF-02):
-
-- Confirmaciones en acciones críticas
-- Feedback visual inmediato
-- Interfaz clara y consistente
+- Badge
+- StatusIcon
 
 ---
 
-## Skills
+# Design System
 
-Ubicadas en:
+Toda decisión visual debe alinearse con:
 
-/frontend/src/ai/skills
-
-Organizadas por dominio:
-
-- cliente/
-- trabajo/
-- empleado/
-- transaccion/
-- cuenta/
-- cuentaSymah/
-- ui/
-
----
-
-## Reglas Generales
-
-- No duplicar componentes
-- Reutilizar Table, Modal y Form
-- Separar lógica y presentación
-- Respetar reglas de negocio SIEMPRE
-- No permitir operaciones inválidas desde UI
-
----
-
-## Flujo de generación
-
-1. Usuario solicita funcionalidad
-2. Orchestrator identifica:
-   - página
-   - intención
-3. Selecciona:
-   - agente de dominio
-   - skill correspondiente
-4. UI Agent construye:
-   - layout
-   - componentes
-5. Se integran reglas de negocio
-
----
-
-## Objetivo final
-
-Generar un frontend:
-
-- Modular
-- Escalable
-- Consistente visualmente
-- Alineado al modelo contable
-- Seguro ante errores de usuario
+```txt
+skills/ui/designSystem.skill.md
+```

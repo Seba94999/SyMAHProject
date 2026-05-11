@@ -2,27 +2,163 @@
 
 ## Responsabilidad
 
-Definir los estilos visuales del sistema por componente.
+Definir el lenguaje visual global de SYMAH.
+
+Esta skill tiene máxima prioridad visual y debe ser aplicada por todos los componentes y páginas del sistema.
 
 ---
 
-## Reglas generales
+# Identidad Visual
 
-- Tema oscuro
-- Uso de CSS por componente
+SYMAH debe sentirse como:
+
+- dashboard empresarial
+- sistema operativo de gestión
+- plataforma financiera moderna
+- software premium industrial
+
+La interfaz debe transmitir:
+
+- claridad
+- control
+- jerarquía
+- profesionalismo
+- consistencia
+
+Evitar:
+
+- CRUDs básicos
+- estilos HTML simples
+- tablas planas
+- layouts vacíos
+- interfaces tipo spreadsheet
+
+---
+
+# Reglas Generales
+
+- Tema oscuro obligatorio
 - No usar estilos inline
-- Mantener consistencia visual
+- Usar CSS modular por componente
+- Mantener consistencia visual global
+- Reutilizar estilos existentes
+- Mantener spacing uniforme
+- Priorizar legibilidad y jerarquía
+
+Todos los estilos CSS deben guardarse en:
+
+C:\Users\Usuario\Desktop\PS\proyecto\symah2\src\frontend\src\styles
 
 ---
 
-## 🎨 Colores base
+# Paleta de Colores
 
-- Fondo principal: negro / gris oscuro
-- Color principal: dorado
-- Gris: elementos secundarios
-- Estados:
-  - Verde → éxito
-  - Rojo → error
+## Fondos
+
+- Background Main → #0D0D0D
+- Background Surface → #171717
+- Background Elevated → #202020
+- Background Modal → rgba(35,35,35,0.92)
+
+---
+
+## Colores Principales
+
+- Gold Primary → #F4C542
+- Gold Hover → #FFD95E
+- Gold Soft → rgba(244,197,66,0.12)
+
+---
+
+## Texto
+
+- Text Primary → #FFFFFF
+- Text Secondary → #B3B3B3
+- Text Muted → #7A7A7A
+
+---
+
+## Estados
+
+- Success → #7CFF6B
+- Danger → #FF6B6B
+- Warning → #FFC857
+- Info → #4DA3FF
+
+---
+
+# Sombras
+
+## Cards
+
+box-shadow: 0 0 20px rgba(0,0,0,0.45);
+
+---
+
+## Glow Dorado
+
+box-shadow: 0 0 12px rgba(244,197,66,0.12);
+
+---
+
+# Bordes
+
+- Radius Small → 10px
+- Radius Medium → 16px
+- Radius Large → 22px
+
+---
+
+# Animaciones
+
+Todos los elementos interactivos deben usar:
+
+transition: all 0.25s ease;
+
+Hover:
+
+- leve elevación
+- glow suave
+- mejor contraste
+
+---
+
+# Tipografía
+
+## Títulos
+
+- font-weight: 800
+- letter-spacing: -1px
+
+---
+
+## Secciones
+
+- font-weight: 700
+
+---
+
+## Texto General
+
+- font-weight: 500
+
+---
+
+# Layout General
+
+Todas las páginas deben usar:
+
+- spacing amplio
+- jerarquía visual clara
+- contenido agrupado
+- márgenes consistentes
+- diseño responsive
+
+Evitar:
+
+- contenido edge-to-edge
+- exceso de tablas
+- layouts comprimidos
 
 ---
 
@@ -30,157 +166,296 @@ Definir los estilos visuales del sistema por componente.
 
 ---
 
-## Navbar
+# Navbar
 
-### Estilo
+## Estilo
 
-- Posición fija (top)
-- Fondo oscuro
-- Altura constante
-
-### Elementos
-
-- Lista horizontal
-- Espaciado uniforme
-
-### Estado activo
-
-- Color dorado
-- Indicador visual (subrayado o fondo)
+- posición fija superior
+- fondo oscuro translúcido
+- backdrop blur
+- altura consistente
+- borde inferior sutil
 
 ---
 
-## Page Layout
+## Elementos
 
-### Estilo
-
-- Fondo general oscuro
-- Contenedor centrado
-
-### Comportamiento
-
-- Espaciado superior para navbar
-- Padding lateral consistente
+- navegación horizontal
+- spacing uniforme
+- iconografía clara
 
 ---
 
-## Table
+## Estado Activo
 
-### Contenedor
-
-- Fondo oscuro
-- Bordes suaves
-
-### Header
-
-- Fondo más oscuro o destacado
-- Texto claro
-- Puede usar acento dorado
-
-### Filas
-
-- Alternancia de tonos oscuros
-- Hover con iluminación leve
-
-### Columna acciones
-
-- Botones alineados
-- Espaciado entre acciones
+- color dorado
+- glow sutil
+- indicador visual
 
 ---
 
-## Modal
+# Page Layout
 
-### Overlay
+## Estilo
 
-- Fondo oscuro semi-transparente
-- Efecto blur
-
-### Caja
-
-- Centrada
-- Fondo oscuro
-- Bordes redondeados
-
-### Botón cerrar
-
-- Ubicación superior derecha
+- fondo oscuro global
+- contenido centrado
+- spacing superior para navbar
 
 ---
 
-## Button
+## Comportamiento
 
-### Tipos
-
-- primary → dorado
-- secondary → gris
-- danger → rojo
-
-### Estilo
-
-- Bordes redondeados
-- Padding uniforme
-
-### Hover
-
-- Cambio leve de brillo
+- padding lateral consistente
+- estructura responsive
+- soporte para dashboards
 
 ---
 
-## Floating Button
+# Card
 
-### Estilo
+## Estilo
 
-- Circular
-- Color principal (dorado)
-
-### Posición
-
-- Fijo abajo derecha
-
-### Comportamiento
-
-- Siempre visible sobre contenido
+- fondo elevado oscuro
+- bordes suaves
+- sombras suaves
+- padding amplio
 
 ---
 
-## Form
+## Uso
 
-### Inputs
+Utilizar para:
 
-- Fondo oscuro
-- Bordes suaves
-- Texto claro
-
-### Espaciado
-
-- Separación vertical entre campos
-
-### Estados
-
-- Error → borde rojo
-- Focus → resaltado
+- KPIs
+- métricas
+- resúmenes
+- paneles operativos
 
 ---
 
-## Status Icon
+# Table
 
-### Comportamiento
+## Filosofía
 
-- Representación visual de estado
-
-### Colores
-
-- Verde → activo / correcto
-- Rojo → error / inactivo
-- Amarillo o gris → estados intermedios
+Las tablas deben sentirse como paneles operativos, no como spreadsheets.
 
 ---
 
-## Reglas finales
+## Contenedor
 
-- Cada componente aplica SOLO sus estilos
+- fondo oscuro elevado
+- bordes suaves
+- separación visual
+
+---
+
+## Header
+
+- fondo destacado
+- tipografía fuerte
+- acento dorado
+
+---
+
+## Filas
+
+- alternancia sutil
+- hover iluminado
+- transición suave
+
+---
+
+## Acciones
+
+- botones alineados
+- spacing consistente
+
+---
+
+# Modal
+
+## Overlay
+
+- fondo oscuro semi-transparente
+- backdrop blur
+
+---
+
+## Caja
+
+- centrada
+- fondo oscuro premium
+- bordes redondeados
+- sombras profundas
+
+---
+
+## Layout Interno
+
+- agrupar contenido por secciones
+- usar grids y cards cuando sea necesario
+- evitar formularios extensos sin jerarquía
+
+---
+
+## Botón Cerrar
+
+- esquina superior derecha
+- hover visual
+
+---
+
+# Button
+
+## Tipos
+
+### Primary
+
+- dorado
+- texto oscuro
+- glow hover
+
+---
+
+### Secondary
+
+- gris oscuro
+- borde sutil
+
+---
+
+### Danger
+
+- rojo suave
+- feedback visual claro
+
+---
+
+## Estilo
+
+- bordes redondeados
+- padding uniforme
+- transición suave
+
+---
+
+# Floating Button
+
+## Estilo
+
+- circular
+- dorado
+- glow suave
+- elevado sobre contenido
+
+---
+
+## Posición
+
+- fijo abajo derecha
+
+---
+
+## Comportamiento
+
+- siempre visible
+- hover con escala leve
+- soporte para menú expandible
+
+---
+
+# Form
+
+## Inputs
+
+- fondo oscuro
+- texto claro
+- bordes suaves
+- sombras internas sutiles
+
+---
+
+## Focus
+
+- borde dorado
+- glow suave
+
+---
+
+## Estados
+
+### Error
+
+- borde rojo
+- feedback visual claro
+
+---
+
+## Layout
+
+- separación consistente
+- formularios agrupados por secciones
+- evitar stacking excesivo
+
+---
+
+# KPI
+
+## Estilo
+
+- métricas grandes
+- tipografía destacada
+- iconografía clara
+- indicadores visuales
+
+---
+
+## Uso
+
+- caja
+- ingresos
+- gastos
+- cobros
+- ganancias
+- actividad
+
+---
+
+# Chart
+
+## Estilo
+
+- colores semánticos
+- contraste alto
+- diseño minimalista
+- integración con dark theme
+
+---
+
+# Status Icon / Badge
+
+## Función
+
+Representar estados visualmente.
+
+---
+
+## Colores
+
+- Verde → éxito / activo
+- Rojo → error / cancelado
+- Amarillo → advertencia
+- Azul → información
+- Gris → neutro
+
+---
+
+# Reglas Finales
+
+- Cada componente aplica solo sus estilos
 - No duplicar estilos entre componentes
-- Mantener coherencia visual en todo el sistema
+- Mantener coherencia visual global
+- Reutilizar componentes existentes
 - Priorizar claridad sobre complejidad
-- Cada estilo de componente CSS sera guardado en la ruta C:\Users\Usuario\Desktop\PS\proyecto\symah2\src\frontend\src\styles
+- Toda interfaz debe sentirse moderna y enterprise

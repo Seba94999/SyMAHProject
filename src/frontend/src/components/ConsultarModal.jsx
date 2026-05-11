@@ -3,15 +3,8 @@ import Modal from "./Modal";
 import Button from "./Button";
 import Table from "./Table";
 
-const ConsultarModal = ({
-  isOpen,
-  onClose,
-  data,
-  title,
-  columns,
-  tableData,
-}) => {
-  if (!data) return null;
+const ConsultarModal = ({ isOpen, onClose, title, columns, tableData }) => {
+  if (!isOpen) return null; // Asegurar que el modal no se renderice si no está abierto
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
